@@ -16,6 +16,11 @@ export default defineConfig({
   // Browser errors stay in the trusted parent-frame console-log flow;
   // do not expose the bridge collector on the public sandbox tunnel.
   devServerBridge: { errorCollector: false },
+  // Dev-only diagnostics logger. It patches a line in @tanstack/start-server-core
+  // that the patched (>= 1.169.39) releases no longer contain, which crashes the dev
+  // server. Production builds are unaffected; remove this once the config package
+  // supports the patched server-core.
+  serverFnErrorLogger: false,
   // Do not set server.hmr.timeout — Vite 8 deprecated those websocket fields
   // (use server.ws.*). Overlay/host/port are package-owned; default WS timeout is 30s.
   tanstackStart: {
