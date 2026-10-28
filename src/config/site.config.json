@@ -1,0 +1,87 @@
+{
+  "business": {
+    "name": "Stotts Extravagant Painting",
+    "legalName": "Stotts Extravagant Painting LLC",
+    "owner": "Aron Stotts",
+    "shortName": "Stotts Extravagant Painting",
+    "phone": "(219) 304-4259",
+    "email": "aronlizjordan@icloud.com",
+    "address": {
+      "street": "",
+      "city": "Trail Creek",
+      "state": "IN",
+      "zip": ""
+    },
+    "serviceAreas": [
+      "Trail Creek, IN",
+      "Michigan City, IN",
+      "LaPorte County, IN",
+      "Porter County, IN",
+      "Michiana Shores, IN",
+      "New Buffalo, MI",
+      "Grand Beach, MI"
+    ],
+    "hours": [
+      {
+        "days": "Monday–Friday",
+        "hours": "8:00 AM–5:00 PM"
+      }
+    ],
+    "social": {
+      "facebook": "",
+      "instagram": "",
+      "google": "",
+      "yelp": "",
+      "nextdoor": "",
+      "youtube": ""
+    }
+  },
+  "branding": {
+    "logo": {
+      "src": "/brand/logo-full.webp",
+      "markSrc": "/brand/logo-mark.webp",
+      "alt": "Stotts Extravagant Painting LLC logo: a red paintbrush in a red paint splatter"
+    },
+    "favicon": "/favicon.png",
+    "colors": {},
+    "images": {}
+  },
+  "services": {
+    "enabled": ["interior", "exterior", "deckFence", "drywall", "powerWashing"],
+    "overrides": {}
+  },
+  "content": {
+    "hero": {
+      "eyebrow": "Local painting contractor · Michigan City, IN",
+      "headline": "Interior & Exterior Painting for Michigan City Homes",
+      "subheadline": "Stotts Extravagant Painting is a family-owned painting company based in Trail Creek, Indiana. We provide interior and exterior painting, fence and deck staining, drywall repair, and power washing for homeowners throughout Northwest Indiana and Southwest Michigan."
+    },
+    "about": {},
+    "finalCta": {
+      "title": "Let's Talk About Your Painting Project.",
+      "body": "Tell us what you need painted, and we'll help you take the next step."
+    },
+    "footerBlurb": "A family-owned painting business based in Trail Creek, Indiana. Serving homeowners around Michigan City with interior and exterior painting, fence and deck staining, drywall repair, and power washing.",
+    "reviews": {
+      "rating": "5.0",
+      "count": 17,
+      "source": "Google",
+      "url": "",
+      "verified": false
+    },
+    "testimonials": []
+  },
+  "seo": {
+    "siteUrl": "https://stottsextravagantpainting.com",
+    "title": "Painting Contractors in Michigan City, IN | Stotts Extravagant Painting",
+    "description": "Stotts Extravagant Painting is a family-owned painting contractor in Trail Creek, serving Michigan City and Northwest Indiana. Interior and exterior painting, deck staining, drywall repair, power washing.",
+    "ogImage": "/brand/og-logo.jpg",
+    "locale": "en_US"
+  },
+  "form": {
+    "provider": "demo",
+    "formspreeId": "",
+    "webhookUrl": "",
+    "showDemoNotice": true
+  }
+}
