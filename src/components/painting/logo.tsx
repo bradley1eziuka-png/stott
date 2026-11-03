@@ -8,8 +8,8 @@ export function Logo({ className }: { className?: string }) {
     <img
       src={LOGO.src}
       alt={LOGO.alt || `${BUSINESS_NAME} logo`}
-      width={1000}
-      height={407}
+      width={520}
+      height={212}
       className={cn("h-auto w-auto object-contain", className)}
     />
   );
@@ -23,8 +23,8 @@ export function LogoMark({ className }: { className?: string }) {
       src={LOGO.markSrc}
       alt=""
       aria-hidden
-      width={420}
-      height={218}
+      width={260}
+      height={135}
       className={cn("h-auto w-auto object-contain", className)}
     />
   );

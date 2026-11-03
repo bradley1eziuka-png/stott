@@ -62,9 +62,9 @@ const BASE_SERVICES = {
     shortDescription:
       "Tired of looking at the same walls? Whether you're changing colors or cleaning up a room that's seen better days, we'll help you get the look you're after.",
     priority: true,
-    metaTitle: "Interior Painting in Michigan City, IN | Stotts Extravagant Painting",
+    metaTitle: "Interior Painters in Michigan City, IN | Stotts Extravagant Painting",
     metaDescription:
-      "Interior painting for homeowners in Michigan City, Trail Creek, and Northwest Indiana. Tell Stotts Extravagant Painting what you want your rooms to look like.",
+      "Interior painting in Michigan City, Trail Creek, and nearby: walls, ceilings, trim, doors, and stairwells. Call (219) 304-4259 or request an estimate.",
     explanation: {
       title: "Start with what you're not happy with.",
       paragraphs: [
@@ -109,6 +109,10 @@ const BASE_SERVICES = {
         q: "How long will it take?",
         a: "That depends on how many rooms and how much needs to be done. Ask when you reach out.",
       },
+      {
+        q: "Do you paint interiors in Michigan City and Trail Creek?",
+        a: "Yes. We're based in Trail Creek and paint interiors for homeowners in Michigan City, Michiana Shores, New Buffalo, and the rest of our service area. Call (219) 304-4259 or request an estimate to get started.",
+      },
     ],
     related: ["drywall", "exterior"],
     heroImage: IMAGES.interior,
@@ -133,9 +137,9 @@ const BASE_SERVICES = {
     shortDescription:
       "Faded siding, worn trim, or a house that's ready for a new color? Give your exterior the attention it needs to look good again.",
     priority: true,
-    metaTitle: "Exterior House Painting in Michigan City, IN | Stotts Extravagant Painting",
+    metaTitle: "Exterior Painters in Michigan City, IN | Stotts Extravagant Painting",
     metaDescription:
-      "Exterior painting for homes in Michigan City and Northwest Indiana. Faded siding, worn trim, or a new color: talk to a family-owned painter based in Trail Creek.",
+      "Exterior house painting in Michigan City and nearby: siding, trim, garage doors, and accents. Family-owned, based in Trail Creek. Call (219) 304-4259.",
     explanation: {
       title: "The outside is what everyone sees first.",
       paragraphs: [
@@ -172,6 +176,10 @@ const BASE_SERVICES = {
         q: "Do you do power washing first?",
         a: "We offer power washing, and it can make sense before painting. We'll talk through what your house needs.",
       },
+      {
+        q: "Which areas do you paint exteriors in?",
+        a: "We're based in Trail Creek and paint exteriors in Michigan City, LaPorte County, Porter County, Michiana Shores, New Buffalo, and Grand Beach. Not sure if you're in range? Give us a call.",
+      },
     ],
     related: ["powerWashing", "deckFence"],
     heroImage: IMAGES.exterior,
@@ -196,9 +204,9 @@ const BASE_SERVICES = {
     shortDescription:
       "Your deck and fence take a beating from the weather. A fresh coat of stain can make a noticeable difference in how your outdoor space looks.",
     priority: true,
-    metaTitle: "Fence & Deck Staining in Michigan City, IN | Stotts Extravagant Painting",
+    metaTitle: "Deck & Fence Staining, Michigan City | Stotts Extravagant Painting",
     metaDescription:
-      "Fence staining and deck staining for homeowners in Michigan City and Northwest Indiana. Bring tired outdoor wood back with Stotts Extravagant Painting.",
+      "Fence staining and deck staining in Michigan City and nearby. Bring faded, graying outdoor wood back without replacing it. Call (219) 304-4259 for an estimate.",
     explanation: {
       title: "Outdoor wood takes a beating.",
       paragraphs: [
@@ -235,6 +243,10 @@ const BASE_SERVICES = {
         q: "Does the weather matter?",
         a: "Yes. Outdoor work needs dry conditions, so timing depends on the forecast.",
       },
+      {
+        q: "Can you stain a fence or deck near Michigan City?",
+        a: "Yes. We stain fences and decks in Michigan City, Trail Creek, and the surrounding Indiana and Michigan communities we serve. Send us a few details or call (219) 304-4259.",
+      },
     ],
     related: ["powerWashing", "exterior"],
     heroImage: IMAGES.deckFence,
@@ -259,7 +271,7 @@ const BASE_SERVICES = {
     priority: false,
     metaTitle: "Drywall Repair in Michigan City, IN | Stotts Extravagant Painting",
     metaDescription:
-      "Drywall repair for painting projects in Michigan City and Northwest Indiana. Holes, cracks, and damaged walls fixed before paint, by a family-owned painter.",
+      "Drywall repair for painting projects in Michigan City and nearby: holes, cracks, and dents patched before paint. Family-owned painter in Trail Creek, IN.",
     explanation: {
       title: "Fix it before you paint over it.",
       paragraphs: [
@@ -297,6 +309,10 @@ const BASE_SERVICES = {
         q: "Do you do major drywall work?",
         a: "Our drywall work is repair for painting projects. If it's bigger than that, we'll tell you.",
       },
+      {
+        q: "Do you do drywall repair in Michigan City?",
+        a: "Yes, as part of painting projects for homeowners in Michigan City, Trail Creek, and nearby. Tell us what needs fixing when you request an estimate.",
+      },
     ],
     related: ["interior", "exterior"],
     heroImage: IMAGES.drywall,
@@ -321,7 +337,7 @@ const BASE_SERVICES = {
     priority: false,
     metaTitle: "Power Washing in Michigan City, IN | Stotts Extravagant Painting",
     metaDescription:
-      "Power washing for siding, decks, and fences in Michigan City and Northwest Indiana. On its own or before painting or staining.",
+      "Power washing for siding, decks, and fences in Michigan City and nearby, on its own or as prep before painting or staining. Call (219) 304-4259.",
     explanation: {
       title: "Clean surfaces look better and take paint better.",
       paragraphs: [
@@ -351,6 +367,10 @@ const BASE_SERVICES = {
         a: "Yes. Cleaning first is a good starting point for either.",
       },
       { q: "Can I book power washing by itself?", a: "Yes. Tell us what you'd like cleaned." },
+      {
+        q: "Do you offer power washing near Michigan City?",
+        a: "Yes. We're based in Trail Creek and power wash siding, decks, and fences for homeowners in Michigan City and the surrounding area. Call (219) 304-4259 to talk it over.",
+      },
     ],
     related: ["exterior", "deckFence"],
     heroImage: IMAGES.powerWashing,

@@ -45,14 +45,16 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-border bg-white/95 shadow-[0_10px_24px_-20px_rgb(23_23_23/0.45)] backdrop-blur">
-        <div className="container-page flex h-[68px] items-center justify-between gap-4 lg:h-[80px]">
+        <div className="container-page flex h-[68px] items-center justify-between gap-4 max-[359px]:gap-1.5 lg:h-[80px]">
           <a href="/" className="flex shrink-0 items-center" aria-label={`${BUSINESS_NAME}, home`}>
             <Logo className="hidden h-[52px] sm:block lg:h-[60px]" />
-            <span className="flex items-center gap-2.5 sm:hidden">
-              <LogoMark className="h-[44px]" />
+            <span className="flex items-center gap-2.5 max-[359px]:gap-1.5 sm:hidden">
+              <LogoMark className="h-[44px] max-[359px]:h-[34px]" />
               <span className="font-display uppercase leading-[0.86] text-primary">
-                <span className="block text-[1.7rem] font-black tracking-[-0.02em]">Stotts</span>
-                <span className="block text-[0.82rem] font-bold tracking-[0.08em]">
+                <span className="block text-[1.7rem] font-black tracking-[-0.02em] max-[359px]:text-[1.5rem]">
+                  Stotts
+                </span>
+                <span className="block text-[0.82rem] font-bold tracking-[0.08em] max-[359px]:text-[0.68rem] max-[359px]:tracking-[0.05em]">
                   Extravagant Painting
                 </span>
               </span>

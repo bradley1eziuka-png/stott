@@ -11,14 +11,15 @@ import {
   BUSINESS_PHONE_TEL,
   LOCATION_LABEL,
 } from "@/lib/site-config";
+import { ctaButton } from "@/components/painting/buttons";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () =>
     pageHead({
-      title: "Get a Painting Estimate | Stotts Extravagant Painting, Michigan City Area",
+      title: "Request a Painting Estimate | Stotts Extravagant Painting",
       description:
-        "Tell Stotts Extravagant Painting about your project, or call (219) 304-4259. Family-owned painter in Trail Creek serving Michigan City and Northwest Indiana.",
+        "Call (219) 304-4259 or tell us about your project. Family-owned painters in Trail Creek, IN serving Michigan City and nearby.",
       path: "/contact",
     }),
   component: Contact,
@@ -49,6 +50,13 @@ function Contact() {
           Have a room, exterior, fence, or deck that needs attention? Tell us a little about the
           project, and we'll take it from there.
         </p>
+        <a
+          href={BUSINESS_PHONE_TEL}
+          className={`${ctaButton({ variant: "red", size: "lg" })} mt-6`}
+        >
+          <Phone />
+          Call {BUSINESS_PHONE}
+        </a>
       </PageHero>
 
       <section className="section-pad bg-background">

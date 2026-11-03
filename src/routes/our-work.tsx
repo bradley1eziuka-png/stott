@@ -9,9 +9,9 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/our-work")({
   head: () =>
     pageHead({
-      title: "Painting Project Photos | Stotts Extravagant Painting, Michigan City Area",
+      title: "Painting Project Photos | Stotts Extravagant Painting",
       description:
-        "Photos of exterior painting, interior painting, and fence and deck staining projects by Stotts Extravagant Painting, a family-owned painter in Trail Creek, Indiana.",
+        "Photos of exterior painting, interior painting, and fence and deck staining projects by Stotts Extravagant Painting in Trail Creek, IN.",
       path: "/our-work",
     }),
   component: OurWork,

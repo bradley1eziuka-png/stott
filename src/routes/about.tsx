@@ -11,9 +11,9 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/about")({
   head: () =>
     pageHead({
-      title: "About Aron Stotts & Stotts Extravagant Painting | Trail Creek, IN",
+      title: "About Aron Stotts | Stotts Extravagant Painting, Trail Creek IN",
       description:
-        "Aron Stotts learned to paint in Florida, moved back to Indiana, and started Stotts Extravagant Painting, a family-owned painting business in Trail Creek serving Michigan City.",
+        "Meet Aron Stotts, who painted for a company in Florida, came home to Indiana, and started Stotts Extravagant Painting in Trail Creek.",
       path: "/about",
     }),
   component: About,

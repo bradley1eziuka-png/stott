@@ -38,8 +38,8 @@
   },
   "branding": {
     "logo": {
-      "src": "/brand/logo-full.webp",
-      "markSrc": "/brand/logo-mark.webp",
+      "src": "/brand/logo-full-sm.webp",
+      "markSrc": "/brand/logo-mark-sm.webp",
       "alt": "Stotts Extravagant Painting LLC logo: a red paintbrush in a red paint splatter"
     },
     "favicon": "/favicon.png",
@@ -72,9 +72,9 @@
     "testimonials": []
   },
   "seo": {
-    "siteUrl": "https://stottsextravagantpainting.com",
-    "title": "Painting Contractors in Michigan City, IN | Stotts Extravagant Painting",
-    "description": "Stotts Extravagant Painting is a family-owned painting contractor in Trail Creek, serving Michigan City and Northwest Indiana. Interior and exterior painting, deck staining, drywall repair, power washing.",
+    "siteUrl": "https://www.stottsextravagantpainting.com",
+    "title": "Painters in Michigan City, IN | Stotts Extravagant Painting",
+    "description": "Family-owned painting contractor in Trail Creek, IN serving Michigan City and nearby. Interior and exterior painting, deck and fence staining, and more.",
     "ogImage": "/brand/og-logo.jpg",
     "locale": "en_US"
   },
