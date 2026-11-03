@@ -125,7 +125,14 @@ export function Footer() {
           <p>
             © {year} {BUSINESS_LEGAL_NAME}. All rights reserved.
           </p>
-          <p>Trail Creek, Indiana</p>
+          <a
+            href="https://getarclo.com"
+            target="_blank"
+            rel="noopener"
+            className="font-semibold text-white/80 underline decoration-red-bright decoration-2 underline-offset-4 hover:text-white"
+          >
+            Website by Arclo
+          </a>
         </div>
       </div>
     </footer>
