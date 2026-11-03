@@ -1,9 +1,8 @@
-import { useState, type FormEvent } from "react";
-import { CheckCircle2, Info, Mail, Phone } from "lucide-react";
+import { useRef, useState, type FormEvent } from "react";
+import { CheckCircle2 } from "lucide-react";
 
-import { FORM_IS_DEMO, submitEstimate } from "@/lib/form-submit";
-import { siteConfig } from "@/config";
-import { BUSINESS_EMAIL, BUSINESS_PHONE, BUSINESS_PHONE_TEL } from "@/lib/site-config";
+import { submitEstimate } from "@/lib/form-submit";
+import { BUSINESS_PHONE, BUSINESS_PHONE_TEL } from "@/lib/site-config";
 import { SERVICE_LIST } from "@/lib/services-data";
 import { cn } from "@/lib/utils";
 import { ctaButton } from "./buttons";
@@ -61,16 +60,16 @@ function FieldError({ id, message }: { id: string; message?: string | undefined 
 }
 
 // Estimate request form. Delivery is handled by src/lib/form-submit.ts:
-// Formspree, a GHL webhook, or "demo" (not connected). Success is shown only
-// after the provider answers 2xx; in demo mode the form says plainly that
-// nothing was sent and keeps the visitor's entries.
+// Formspree or a GHL webhook. Success is shown only after the provider answers
+// 2xx; on any failure the visitor's entries are kept so they can retry.
 export function EstimateFormCard({ id, className }: { id?: string; className?: string }) {
   const [values, setValues] = useState<Values>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "demo" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [honeypot, setHoneypot] = useState("");
+  // Synchronous lock: state updates are async, so a fast double-tap could
+  // otherwise fire two requests before the button disables.
+  const inFlight = useRef(false);
 
   function update<K extends keyof Values>(key: K, value: string) {
     setValues((v) => ({ ...v, [key]: value }));
@@ -91,16 +90,20 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
+    if (inFlight.current) return;
     if (!validate()) return;
+    inFlight.current = true;
     setStatus("submitting");
-    const result = await submitEstimate(values, honeypot);
-    if (result.status === "success") {
-      setStatus("success");
-      setValues(EMPTY);
-    } else if (result.status === "demo") {
-      setStatus("demo");
-    } else {
-      setStatus("error");
+    try {
+      const result = await submitEstimate(values, honeypot);
+      if (result.status === "success") {
+        setStatus("success");
+        setValues(EMPTY);
+      } else {
+        setStatus("error");
+      }
+    } finally {
+      inFlight.current = false;
     }
   }
 
@@ -120,43 +123,15 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
         interested in.
       </p>
 
-      {FORM_IS_DEMO && siteConfig.form.showDemoNotice && (
-        <div
-          role="note"
-          className="mt-5 flex gap-3 border-l-4 border-primary bg-secondary px-4 py-3 text-[0.92rem] leading-[1.55] text-primary"
-        >
-          <Info className="mt-0.5 size-5 shrink-0" aria-hidden />
-          <p>
-            <strong>Online requests aren't connected yet.</strong> Until they are, please{" "}
-            <a href={BUSINESS_PHONE_TEL} className="font-bold underline underline-offset-2">
-              call {BUSINESS_PHONE}
-            </a>
-            {BUSINESS_EMAIL && (
-              <>
-                {" "}
-                or{" "}
-                <a
-                  href={`mailto:${BUSINESS_EMAIL}`}
-                  className="font-bold underline underline-offset-2"
-                >
-                  email us
-                </a>
-              </>
-            )}
-            .
-          </p>
-        </div>
-      )}
-
       {status === "success" ? (
         <div
           role="status"
           className="mt-8 flex flex-col items-start gap-4 border-2 border-primary p-7"
         >
           <CheckCircle2 className="size-10 text-accent" aria-hidden />
-          <h3 className="text-4xl">Thank you. We'll be in touch.</h3>
+          <h3 className="text-4xl">Thank you!</h3>
           <p className="text-muted-foreground">
-            Your request was received. We'll reach out to talk through your project. Need us sooner?{" "}
+            Your estimate request has been submitted. We'll be in touch soon. Need us sooner?{" "}
             <a href={BUSINESS_PHONE_TEL} className="font-bold text-primary underline">
               Call {BUSINESS_PHONE}
             </a>
@@ -301,45 +276,16 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
           <button
             type="submit"
             disabled={status === "submitting"}
+            aria-busy={status === "submitting"}
             className={cn(ctaButton({ variant: "red", size: "lg" }), "w-full")}
           >
             {status === "submitting" ? "Sending…" : "Send my request"}
           </button>
 
-          {status === "demo" && (
-            <div
-              role="alert"
-              className="border-2 border-primary bg-secondary p-4 text-[0.95rem] leading-[1.6] text-primary"
-            >
-              <p className="font-bold">Your request was not sent.</p>
-              <p className="mt-1">
-                This form isn't connected to an inbox yet, so nothing was delivered. Please reach us
-                directly:
-              </p>
-              <p className="mt-3 flex flex-col gap-2 font-bold sm:flex-row sm:gap-6">
-                <a
-                  href={BUSINESS_PHONE_TEL}
-                  className="inline-flex items-center gap-2 underline underline-offset-2 hover:text-accent"
-                >
-                  <Phone className="size-4" aria-hidden />
-                  {BUSINESS_PHONE}
-                </a>
-                {BUSINESS_EMAIL && (
-                  <a
-                    href={`mailto:${BUSINESS_EMAIL}`}
-                    className="inline-flex items-center gap-2 break-all underline underline-offset-2 hover:text-accent"
-                  >
-                    <Mail className="size-4 shrink-0" aria-hidden />
-                    {BUSINESS_EMAIL}
-                  </a>
-                )}
-              </p>
-            </div>
-          )}
-
           {status === "error" && (
             <p role="alert" className="text-sm font-semibold text-destructive">
-              We couldn't send your request. Please try again or call us at{" "}
+              We couldn't send your request. Your information is still here, so please try again, or
+              call us at{" "}
               <a href={BUSINESS_PHONE_TEL} className="underline">
                 {BUSINESS_PHONE}
               </a>

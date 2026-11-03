@@ -3,10 +3,10 @@
 //
 //   formspree    POST to https://formspree.io/f/<formspreeId>
 //   ghl-webhook  POST JSON to a GoHighLevel workflow "Inbound Webhook" URL
-//   demo         not connected — NEVER reports success
 //
 // Success is returned only when the receiving service answers 2xx. Network
-// failures, CORS blocks, and non-2xx answers all return { status: "error" }.
+// failures, CORS blocks, non-2xx answers, and a missing/invalid provider
+// config all return { status: "error" }. Nothing is ever faked.
 // No secrets live here: a Formspree ID and a GHL inbound-webhook URL are
 // public form endpoints by design (private API keys must never go in this file).
 // ───────────────────────────────────────────────────────────────────────────
@@ -22,8 +22,7 @@ export type EstimateValues = {
   details: string;
 };
 
-export type SubmitResult =
-  { status: "success" } | { status: "demo" } | { status: "error"; message: string };
+export type SubmitResult = { status: "success" } | { status: "error"; message: string };
 
 const { provider, formspreeId, webhookUrl } = siteConfig.form;
 
@@ -34,7 +33,6 @@ function providerConfigured() {
 }
 
 export const FORM_IS_LIVE = providerConfigured();
-export const FORM_IS_DEMO = !FORM_IS_LIVE;
 
 const GENERIC_ERROR = "We couldn't send your request.";
 
@@ -43,17 +41,17 @@ export async function submitEstimate(
   honeypot: string,
 ): Promise<SubmitResult> {
   if (honeypot) return { status: "error", message: GENERIC_ERROR }; // bot filled the hidden field
-  if (FORM_IS_DEMO) return { status: "demo" };
+  if (!FORM_IS_LIVE) return { status: "error", message: "Form is not configured." };
 
   const common = {
     name: values.name.trim(),
     phone: values.phone.trim(),
     email: values.email.trim(),
-    service: values.service,
-    location: values.location.trim(),
-    message: values.details.trim(),
+    service_needed: values.service,
+    city_or_zip: values.location.trim(),
+    project_details: values.details.trim(),
     business: BUSINESS_NAME,
-    page: typeof window !== "undefined" ? window.location.href : "",
+    page_url: typeof window !== "undefined" ? window.location.href : "",
   };
 
   try {
@@ -72,12 +70,12 @@ export async function submitEstimate(
           first_name: common.name,
           phone: common.phone,
           email: common.email,
-          city_or_zip: common.location,
-          service_needed: common.service,
-          message: common.message,
+          city_or_zip: common.city_or_zip,
+          service_needed: common.service_needed,
+          message: common.project_details,
           source: "website-estimate-form",
           business: common.business,
-          page: common.page,
+          page: common.page_url,
         }),
       });
     }

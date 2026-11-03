@@ -15,7 +15,7 @@ if (cfg.business.name === "Your Painting Company")
 if (cfg.business.phone === "(555) 555-0100")
   problems.push("business.phone is still the placeholder");
 if (cfg.form.provider === "demo")
-  notes.push("form.provider is 'demo' — fine for a Loom preview, but leads are NOT delivered");
+  problems.push("form.provider is 'demo' — leads are NOT delivered");
 if (cfg.form.provider === "formspree" && !cfg.form.formspreeId)
   problems.push("form.provider is formspree but formspreeId is empty");
 if (cfg.form.provider === "ghl-webhook" && !cfg.form.webhookUrl)

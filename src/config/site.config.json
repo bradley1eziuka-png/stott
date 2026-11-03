@@ -5,7 +5,7 @@
     "owner": "Aron Stotts",
     "shortName": "Stotts Extravagant Painting",
     "phone": "(219) 304-4259",
-    "email": "aronlizjordan@icloud.com",
+    "email": "aron.stotts@stottsextravagantpainting.com",
     "address": {
       "street": "",
       "city": "Trail Creek",
@@ -79,9 +79,9 @@
     "locale": "en_US"
   },
   "form": {
-    "provider": "demo",
-    "formspreeId": "",
+    "provider": "formspree",
+    "formspreeId": "maeelkze",
     "webhookUrl": "",
-    "showDemoNotice": true
+    "showDemoNotice": false
   }
 }
