@@ -26,6 +26,11 @@ export interface ServiceConfig {
   eyebrow: string;
   /** Page H1. */
   headline: string;
+  /** Hero estimate button label. Defaults to "Get a painting estimate". */
+  estimateCta?: string;
+  /** Gallery section labels. Default to "Our work" / "Some of our projects". */
+  galleryEyebrow?: string;
+  galleryTitle?: string;
   /** Relatable opening paragraph under the headline. */
   intro: string;
   /** Label for the homepage service card link. */
@@ -331,6 +336,11 @@ const BASE_SERVICES = {
     intro:
       "Dirt, mildew, and buildup can make an otherwise good-looking house, deck, or fence look worn down. Sometimes cleaning is all it takes. Other times it's the first step before painting or staining.",
     eyebrow: "Power Washing",
+    estimateCta: "Request an estimate",
+    // No photos of actual power washing yet, so the gallery is labeled by what
+    // the photos show (exterior projects), not as completed power washing work.
+    galleryEyebrow: "Photo gallery",
+    galleryTitle: "Exterior Projects",
     headline: "Sometimes, What Your Exterior Needs Is a Good Cleaning.",
     shortDescription:
       "Dirt and buildup can make an otherwise good-looking exterior seem worn down. Power washing helps clean up those surfaces.",

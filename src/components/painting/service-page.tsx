@@ -16,7 +16,24 @@ import { SectionHeading } from "./section-heading";
 
 // One layout for all five services: split hero, explanation + included list,
 // homeowner benefits, real project photos, FAQ, related services, CTA.
+// Desktop-only crop focus for photos that get cropped when a gallery mixes
+// portrait and landscape shots (see `mixed` below). Mobile/tablet show every
+// photo at its natural ratio, so these have no effect there.
+const GALLERY_FOCUS: Record<string, string> = {
+  "interior-gray": "lg:object-[30%_50%]",
+  "interior-bath": "lg:object-[50%_50%]",
+  "interior-stairs-tall": "lg:object-[50%_40%]",
+};
+
 export function ServicePage({ service }: { service: ServiceConfig }) {
+  // A 3-column grid row is as tall as its tallest card. When portrait and
+  // landscape photos share a row, each image's own aspect ratio left the
+  // landscape cards short, with the card background showing underneath. At
+  // desktop widths, mixed galleries use one shared ratio so every card is the
+  // same size and every image fills it.
+  const mixed =
+    service.gallery.some((p) => p.height > p.width) &&
+    service.gallery.some((p) => p.height <= p.width);
   const related = service.related.filter(isServiceEnabled).map((k) => SERVICES[k]);
   return (
     <>
@@ -61,8 +78,16 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
               className="rise mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
               style={{ ["--d" as string]: "230ms" }}
             >
-              <a href="/contact#estimate" className={ctaButton({ variant: "red", size: "lg" })}>
-                Get a painting estimate
+              <a
+                href="/contact#estimate"
+                // Long labels (e.g. "Request a power washing estimate") wrap on phones
+                // instead of overflowing; short labels fit on one line and are unaffected.
+                className={cn(
+                  ctaButton({ variant: "red", size: "lg" }),
+                  "max-[440px]:h-auto max-[440px]:min-h-14 max-[440px]:whitespace-normal max-[440px]:py-2.5 max-[440px]:text-center max-[440px]:leading-tight",
+                )}
+              >
+                {service.estimateCta ?? "Get a painting estimate"}
                 <ArrowRight />
               </a>
               <a
@@ -167,7 +192,10 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
         <section className="section-pad bg-white">
           <div className="container-page">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-              <SectionHeading eyebrow="Our work" title="Some of our projects" />
+              <SectionHeading
+                eyebrow={service.galleryEyebrow ?? "Our work"}
+                title={service.galleryTitle ?? "Some of our projects"}
+              />
               <a href="/our-work" className={ctaButton({ variant: "outline", size: "md" })}>
                 See more of our work
                 <ArrowRight />
@@ -194,6 +222,8 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
                     className={cn(
                       "w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105",
                       photo.height > photo.width ? "aspect-[3/4]" : "aspect-[4/3]",
+                      mixed && "lg:aspect-square",
+                      mixed && GALLERY_FOCUS[photo.id],
                     )}
                   />
                   <figcaption className="on-dark absolute bottom-0 left-0 bg-primary px-3.5 py-1.5 font-display text-base font-extrabold uppercase tracking-[0.06em] text-white">
